@@ -4,6 +4,10 @@ import ReactMapGL from 'react-map-gl';
 import FirstTimeModal from './components/FirstTimeModal'
 import RenderMarkers from './components/RenderMarkers'
 import AddMarkerPopup from './components/AddMarkerPopup'
+import mapboxgl from 'mapbox-gl';
+
+// eslint-disable-next-line import/no-webpack-loader-syntax
+mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
 
 const App = () => {
 
