@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import ReactMapGL, { Marker, Popup } from 'react-map-gl';
+import ReactMapGL from 'react-map-gl';
 import FirstTimeModal from './components/FirstTimeModal'
 import RenderMarkers from './components/RenderMarkers'
 import AddMarkerPopup from './components/AddMarkerPopup'
