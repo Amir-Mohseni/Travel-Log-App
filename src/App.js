@@ -60,7 +60,6 @@ const App = () => {
       return
     }
     setNewMarkerInfo({ ...newMarkerInfo, [name]: value })
-    console.log(newMarkerInfo)
   }
 
   // Validate and send post request for creating new marker
@@ -81,12 +80,14 @@ const App = () => {
       }
     })
     addNewMarker = await addNewMarker.json()
-    
-    console.log(addNewMarker)
 
     if( addNewMarker._id ){
       setMarkers([ ...markers, newMarkerInfo ])
     }
+
+    setShowAddMarkerPopup(false)
+    setNewMarkerInfo({})
+
   }
 
   // Closes first time modal and saves new variable in local storage if user checked 'Dont show again' checkbox
