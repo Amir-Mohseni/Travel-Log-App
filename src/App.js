@@ -4,6 +4,7 @@ import ReactMapGL from 'react-map-gl';
 import FirstTimeModal from './components/FirstTimeModal'
 import RenderMarkers from './components/RenderMarkers'
 import AddMarkerPopup from './components/AddMarkerPopup'
+import Footer from './components/Footer'
 import mapboxgl from 'mapbox-gl';
 
 // eslint-disable-next-line import/no-webpack-loader-syntax
@@ -99,34 +100,39 @@ const App = () => {
   }
 
   return (
-    <ReactMapGL
-      {...viewport}
-      mapStyle="mapbox://styles/iliya-mh/ckoo5fjsrb35c17qeukklg2x7"
-      onViewportChange={nextViewport => setViewport(nextViewport)}
-      mapboxApiAccessToken={process.env.REACT_APP_MAP_GL_TOKEN}
-      onDblClick={showAddMarker}
-    >
-      { 
-        firstVisit && <FirstTimeModal showAgain={showAgain} setShowAgain={setShowAgain} closeOpeningModal={closeOpeningModal} />
-      }
+    <>
+    
+      <ReactMapGL
+        {...viewport}
+        mapStyle="mapbox://styles/iliya-mh/ckoo5fjsrb35c17qeukklg2x7"
+        onViewportChange={nextViewport => setViewport(nextViewport)}
+        mapboxApiAccessToken={process.env.REACT_APP_MAP_GL_TOKEN}
+        onDblClick={showAddMarker}
+      >
+        { 
+          firstVisit && <FirstTimeModal showAgain={showAgain} setShowAgain={setShowAgain} closeOpeningModal={closeOpeningModal} />
+        }
 
-      {
-        <RenderMarkers markers={markers} showPopup={showPopup} setshowPopup={setshowPopup} />
-      }
+        {
+          <RenderMarkers markers={markers} showPopup={showPopup} setshowPopup={setshowPopup} />
+        }
 
-      {
-        showAddMarkerPopup !== false && 
-        <AddMarkerPopup 
-          newMarkerInfo={newMarkerInfo} 
-          setShowAddMarkerPopup={setShowAddMarkerPopup} 
-          setNewMarkerInfo={setNewMarkerInfo}
-          changeNewMarker={changeNewMarker}
-          createNewMarker={createNewMarker}
-          newMarkerErr={newMarkerErr}
-        />
-      }
+        {
+          showAddMarkerPopup !== false && 
+          <AddMarkerPopup 
+            newMarkerInfo={newMarkerInfo} 
+            setShowAddMarkerPopup={setShowAddMarkerPopup} 
+            setNewMarkerInfo={setNewMarkerInfo}
+            changeNewMarker={changeNewMarker}
+            createNewMarker={createNewMarker}
+            newMarkerErr={newMarkerErr}
+          />
+        }
+      </ReactMapGL>
 
-    </ReactMapGL>
+      <Footer />
+
+    </>
   );
 }
 
