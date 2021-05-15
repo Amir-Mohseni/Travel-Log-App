@@ -73,8 +73,6 @@ const App = () => {
       return
     }
 
-
-
     let addNewMarker = await fetch( `${process.env.REACT_APP_MARKER_API}/api/add`, {
       method: 'POST',
       body: JSON.stringify(newMarkerInfo),
@@ -87,7 +85,7 @@ const App = () => {
     console.log(addNewMarker)
 
     if( addNewMarker._id ){
-      setMarkers( ...markers, newMarkerInfo )
+      setMarkers([ ...markers, newMarkerInfo ])
     }
   }
 
