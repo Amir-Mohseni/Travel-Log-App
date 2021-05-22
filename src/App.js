@@ -101,11 +101,11 @@ const App = () => {
   }
 
 	const changedViewPort = (e) => {
-		
+
 		if( e.zoom < 3 && showMarkersText ) setShowMarkersText(false)
 		else if (  e.zoom >= 3 && !showMarkersText ) setShowMarkersText(true)
 
-		return setViewport({...e})
+		return setViewport(e)
 	}
 
   return (
@@ -114,10 +114,9 @@ const App = () => {
       <ReactMapGL
         {...viewport}
         mapStyle="mapbox://styles/iliya-mh/ckoo5fjsrb35c17qeukklg2x7"
-        onViewportChange={nextViewport => setViewport(nextViewport)}
+        onViewportChange={changedViewPort}
         mapboxApiAccessToken={process.env.REACT_APP_MAP_GL_TOKEN}
         onDblClick={showAddMarker}
-				onViewportChange={changedViewPort}
       >
         { 
           firstVisit && <FirstTimeModal showAgain={showAgain} setShowAgain={setShowAgain} closeOpeningModal={closeOpeningModal} />
