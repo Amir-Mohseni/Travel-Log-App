@@ -191,3 +191,34 @@ div.dont-show-again input {
   color: #fff;
   text-decoration: none;
 }
+
+@media ( max-width: 500px ) {
+
+	/* .fist-visit-wrapper {
+		width: 100vw;
+		height: 100vh;
+		background: rgba(0, 0, 0, 0.2);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	} */
+	
+	.fist-visit-modal {
+		width: 80%;
+		height: fit-content;
+	}
+	
+	.fist-visit-modal h1 {
+		line-height: 1.05;
+	}
+	
+	.fist-visit-modal p {
+		font-size: 16px;
+		margin-bottom: 20px;
+	}
+	
+	.dont-show-again {
+		font-size: 16px;
+	}
+
+}

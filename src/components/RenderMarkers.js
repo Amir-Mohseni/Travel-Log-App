@@ -1,7 +1,7 @@
 import React from 'react'
 import { Marker, Popup } from 'react-map-gl';
 
-export default function RenderMarkers({ markers, showPopup, setshowPopup }) {
+export default function RenderMarkers({ markers, showPopup, setshowPopup, showMarkersText }) {
   return (
     <div>
       {
@@ -10,7 +10,7 @@ export default function RenderMarkers({ markers, showPopup, setshowPopup }) {
             <Marker key={marker._id} latitude={marker.latitude} longitude={marker.longitude}>
               <div className="marker-div" onClick={ () => setshowPopup(marker) } >
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                <h3>{ marker.title }</h3>
+                <h3>{ showMarkersText ? marker.title : '' }</h3>
               </div>
             </Marker>
             {

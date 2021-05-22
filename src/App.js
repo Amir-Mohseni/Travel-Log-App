@@ -21,6 +21,7 @@ const App = () => {
     zoom: 4
   });
   const [markers,setMarkers] = useState([])
+  const [showMarkersText,setShowMarkersText] = useState(false)
   const [showPopup,setshowPopup] = useState(false)
   const [showAddMarkerPopup,setShowAddMarkerPopup] = useState(false)
   const [newMarkerInfo,setNewMarkerInfo] = useState({})
@@ -99,6 +100,14 @@ const App = () => {
 
   }
 
+	const changedViewPort = (e) => {
+		
+		if( e.zoom < 3 && showMarkersText ) setShowMarkersText(false)
+		else if (  e.zoom >= 3 && !showMarkersText ) setShowMarkersText(true)
+
+		return setViewport({...e})
+	}
+
   return (
     <>
     
@@ -108,13 +117,14 @@ const App = () => {
         onViewportChange={nextViewport => setViewport(nextViewport)}
         mapboxApiAccessToken={process.env.REACT_APP_MAP_GL_TOKEN}
         onDblClick={showAddMarker}
+				onViewportChange={changedViewPort}
       >
         { 
           firstVisit && <FirstTimeModal showAgain={showAgain} setShowAgain={setShowAgain} closeOpeningModal={closeOpeningModal} />
         }
 
         {
-          <RenderMarkers markers={markers} showPopup={showPopup} setshowPopup={setshowPopup} />
+          <RenderMarkers markers={markers} showPopup={showPopup} setshowPopup={setshowPopup} showMarkersText={showMarkersText} />
         }
 
         {
